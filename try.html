@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio with User Popover</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      background: #222;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.5rem;
+      z-index: 1000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .section {
+      height: 100vh;
+      padding-top: 80px;
+      text-align: center;
+    }
+
+    .section:nth-child(even) {
+      background: #f0f0f0;
+    }
+
+    .section:nth-child(odd) {
+      background: #e0e0e0;
+    }
+
+    .user-button {
+      background: #0066cc;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+    .user-popover {
+      position: fixed;
+      background: white;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      padding: 1rem;
+      display: none;
+      z-index: 9999;
+      min-width: 280px;
+    }
+
+    .user-popover.active {
+      display: block;
+    }
+
+    .user-popover h3 {
+      margin: 0 0 0.5rem;
+      color: #333;
+    }
+
+    .user-popover hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 0.75rem 0;
+    }
+
+    .user-popover p {
+      margin: 0.3rem 0;
+      font-size: 0.95rem;
+    }
+
+    .user-popover .resume-link {
+      display: inline-block;
+      margin-top: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+
+    .user-popover .resume-link:hover {
+      background: #004c99;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </div>
+    <button class="user-button" id="userButton">User Profile</button>
+  </div>
+
+  <!-- User Popover with Developer Info -->
+  <div id="userPopover" class="user-popover">
+    <h3>John Doe</h3>
+    <p><strong>Role:</strong> Front-End Developer</p>
+    <p><strong>Location:</strong> New York, USA</p>
+    <hr />
+    <p><strong>Skills:</strong></p>
+    <p>HTML, CSS, JavaScript, React, Tailwind CSS</p>
+    <hr />
+    <p><strong>Experience:</strong></p>
+    <p>3+ years building responsive and accessible web apps.</p>
+    <hr />
+    <a class="resume-link" href="#" download>Download Resume</a>
+  </div>
+
+  <!-- Sections -->
+  <div id="home" class="section">
+    <h1>Home Section</h1>
+  </div>
+  <div id="skills" class="section">
+    <h1>Skills Section</h1>
+  </div>
+  <div id="projects" class="section">
+    <h1>Projects Section</h1>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const userButton = document.getElementById("userButton");
+    const userPopover = document.getElementById("userPopover");
+
+    userButton.addEventListener("click", () => {
+      const isVisible = userPopover.classList.toggle("active");
+
+      if (isVisible) {
+        const rect = userButton.getBoundingClientRect();
+        userPopover.style.top = rect.bottom + 10 + "px";
+        userPopover.style.left = rect.left + "px";
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!userPopover.contains(event.target) && !userButton.contains(event.target)) {
+        userPopover.classList.remove("active");
+      }
+    });
+  </script>
+
+</body>
+</html>
