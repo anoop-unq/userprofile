@@ -478,20 +478,39 @@ function downloadCV() {
         userPopover.style.position = "fixed";
         userPopover.style.top = rect.bottom + 10 + "px";
         userPopover.style.left = rect.left + "px";
-
+        userPopover.style.display = "block";
+        void userPopover.offsetWidth; // Force reflow
+        userPopover.classList.remove("hide");
+        userPopover.classList.add("show");
 
       }
     });
 
     // Close popover when clicking outside
     document.addEventListener("click", function (event) {
-      if (!userPopover.contains(event.target) && !userButton.contains(event.target)) {
+      if (userPopover.contains(event.target) && !userButton.contains(event.target)) {
         userPopover.classList.remove("active");
       }
     });
 
     function openImage() {
-    const imageUrl = 'provisional.jpg'; // Replace with your image URL
+    const imageUrl = 'provisional.jpg';
     window.open(imageUrl, '_self');
   }
   
+  let cardUser = document.querySelector('.log-out')
+  
+  cardUser.addEventListener("click",function(){
+    
+   userPopover.classList.add("hide");
+   
+
+  
+  // Optionally fully hide after animation
+  setTimeout(() => {
+    userPopover.style.display = "none";
+        userPopover.classList.remove("show");
+
+    userPopover.classList.remove("hide"); 
+  },500)
+})
