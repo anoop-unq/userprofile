@@ -15,6 +15,7 @@ window.onscroll = function () {
   }
 };
 
+
 // Side Navigation Menu
 let body = document.querySelector("body");
 let navBar = document.querySelector(".navbar");
@@ -114,8 +115,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function downloadCV() {
   const link = document.createElement('a');
-  link.href = "resumeCv/Front_EndMan_7285.pdf";
-  link.download = 'Front_EndMan_7285.pdf';
+  link.href = "resumeCv/Anoop_Front_Dev.pdf";
+  link.download = 'Anoop_Front_Dev.pdf';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
@@ -125,7 +126,7 @@ function downloadCV() {
 
   setTimeout(() => {
     msg.classList.remove('show');
-  }, 2000);
+  }, 3000);
 }
 
 
@@ -201,7 +202,7 @@ function downloadCV() {
           <h3 class="project-title">${title}</h3>
           <p class="project-description">${description}</p>
           <div class="project-links">
-            <a href="#" onclick="openWithSpinner(event, '${liveLink}','${containerId}-spinner')">GitHub</a>
+            <a href="#" onclick="openWithSpinner(event, '${liveLink}','${containerId}-spinner')">Live Project</a>
            <div id="${containerId}-spinner" class="spinner">
              <div class="dots">
             <div class="dot"></div>

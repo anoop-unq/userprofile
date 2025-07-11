@@ -1804,9 +1804,18 @@ section .button-11 button:hover{
   border-radius: 50%;
   transition: 1s;
 }
+.center-man{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}
 .logo-image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  border-radius: 50%;
+  border-radius: 25px;
   border:0px solid #000000;
   object-fit: cover;
   /* box-shadow: 1px 2px 1px rgba(0, 0, 0, 0.75); */
@@ -1829,7 +1838,6 @@ section .button-11 button:hover{
   overflow: hidden;
 }
 #over{
-  border-radius: 50%!important;
   transform: scale(1);
 }
 
@@ -2412,7 +2420,7 @@ section .button-11 button:hover{
     transition: 1s ease-in-out;
   }
   .logo-image-11:hover{
-    transform: scale(1.06);
+    transform: scale(1);
   }
   .logo-image:hover{
     transform: scale(1.15);
@@ -2480,4 +2488,203 @@ section .button-11 button:hover{
       margin: 11px;
     }
   
+}
+
+
+/* ========== Root variables ========== */
+:root {
+  --radius: 1.25rem;
+  --blur-bg: rgba(255, 255, 255, 0.25);
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ========== Base reset ========== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ========== Section heading ========== */
+.section-title {
+  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  line-height: 1.1;
+  position: relative;
+  overflow: hidden;          /* so underline animation clips */
+}
+
+.section-title span {
+  background: linear-gradient(90deg, #2563eb, #ec4899, #f59e0b);
+  --webkit-background-clip: text;
+  --webkit-text-fill-color: transparent;
+  animation: hue 12s linear infinite;
+}
+
+/* Animated underline */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 0;
+  height: 4px;
+  background: #2563eb;
+  border-radius: 2px;
+  transform: translateX(-50%);
+  animation: underline 2s ease-out forwards;
+}
+
+@keyframes underline { to { width: 80%; } }
+@keyframes hue { 0% { filter: hue-rotate(0); } 100% { filter: hue-rotate(360deg); } }
+
+/* ========== Card grid ========== */
+/* ========== Card grid ========== */
+.cards{
+  /* Layout */
+  --min: 15rem;                    /* 👈 base card width */
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(var(--min),1fr));
+
+  /* Spacing & alignment */
+  gap:clamp(1rem,2vw,2rem);        /* gap shrinks a bit on tiny screens */
+  place-content:center;            /* centers the whole grid */
+  width:min(1100px,100%);
+  margin-inline:auto;              /* centers in page */
+  padding-inline:clamp(1rem,4vw,2.5rem);
+}
+
+/* ===== Fine‑tune for tablets & mobiles ===== */
+@media(max-width:900px){
+  .cards{--min:13rem;}             /* squeeze cards a little */
+}
+@media(max-width:650px){
+  .cards{--min:11rem;}
+}
+@media(max-width:450px){
+  .cards{--min:100%}               /* single‑column on very small phones */
+}
+
+
+/* ========== Card base ========== */
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  padding: 2.5rem 2rem;
+  backdrop-filter: blur(12px);
+  background: var(--blur-bg);
+  box-shadow: var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+/* Glass overlay */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.05); /* soft overlay */
+  opacity: 0.15;  /* reduce visual interference */
+}
+
+/* Icon + text */
+.icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.15));
+}
+.card h3,
+.card p {
+  color: #fff;
+}
+
+.card .icon {
+  color: #111; /* Or try #222 or #333 for slightly softer black */
+}
+
+/* ========== Brand gradients ========== */
+.blue  { background-image: linear-gradient(135deg, #3b82f6, #60a5fa); }
+.orange{ background-image: linear-gradient(135deg, #f97316, #fdba74); }
+.purple{ background-image: linear-gradient(135deg, #a855f7, #c084fc); }
+.green { background-image: linear-gradient(135deg, #22c55e, #86efac); }
+.red   { background-image: linear-gradient(135deg, #ef4444, #fb7185); }
+.cyan  { background-image: linear-gradient(135deg, #06b6d4, #67e8f9); }
+.lime  { background-image: linear-gradient(135deg, #84cc16, #bef264); }
+.teal  { background-image: linear-gradient(135deg, #14b8a6, #5eead4); }
+
+/* white text on vivid backgrounds */
+.card h3, .card p, .card .icon { color: #ffffff; }
+.card .icon:hover{
+  color: #000000;
+  transition: 0.25s ease-in-out;
+}
+/* ========== Small‑screen tweaks ========== */
+@media (max-width: 480px) {
+
+  .card      { padding: 2rem 1.25rem; }
+  .icon      { font-size: 2.2rem; }
+}
+
+/* ========== Global font ========== */
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+}
+
+/* ========== New Heading UI ========== */
+.ui-heading {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+  animation: fadeInUp 1s ease-in-out;
+}
+
+.ui-heading h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+ color: rgb(114, 82, 243);
+  animation: hueShift 12s linear infinite;
+}
+
+.ui-heading p {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  color: #555;
+  max-width: 650px;
+  margin-inline: auto;
+  line-height: 1.5;
+}
+
+/* ===== Subtle animations ===== */
+@keyframes hueShift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dark {
+  background-image: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+}
+.teal {
+  background-image: linear-gradient(135deg, #2dd4bf, #5eead4);
+}
+.amber {
+  background-image: linear-gradient(135deg, #f59e0b, #fbbf24);
+}
+.sky {
+  background-image: linear-gradient(135deg, #38bdf8, #7dd3fc);
 }
