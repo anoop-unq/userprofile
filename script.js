@@ -349,13 +349,15 @@ function downloadCV() {
       observer.observe(skill);
     });
 
+    
    
     let dark = document.querySelector(".dark-mode")
     dark.addEventListener("click",function(){
     // body.style.backgroundColor="#121212";
    document.body.classList.toggle('dark')
    let moon = document.getElementById('moon')
-  
+   
+   document.querySelector('.para').classList.toggle('dark')
    document.querySelector('.auto').classList.toggle('dark')
    document.querySelector('.title').classList.toggle('dark')
    document.getElementById('clip-text1').classList.toggle('dark')
@@ -363,14 +365,14 @@ function downloadCV() {
    document.getElementById('clip-text0').classList.toggle('dark')
    document.getElementById('clip-text00').classList.toggle('dark')
    document.getElementById('skills').classList.toggle('dark')
-
+  
    document.querySelector('.titleE1').classList.toggle('dark')
    document.querySelector('.button-logic').classList.toggle('dark')
    document.querySelector('.move-on').classList.toggle('dark')
    document.querySelector('.title11').classList.toggle('dark')
    document.querySelector('.title22').classList.toggle('dark')
    document.querySelector('.title33').classList.toggle('dark')
-   document.querySelector('.title44').classList.toggle('dark')
+   document.querySelector('.title44').classList.toggle('darkness')
    let icons = document.querySelectorAll('.graduate')
       icons.forEach(icon =>{
         icon.classList.toggle('dark')
@@ -379,7 +381,7 @@ function downloadCV() {
 
   let menuItems =  document.querySelectorAll('.nav-btn')
   menuItems.forEach(menu =>{
-    menu.classList.toggle('dark')
+    menu.classList.toggle('darkness')
   })
 
 

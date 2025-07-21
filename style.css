@@ -80,6 +80,108 @@ body{
     --bg: #121212;
     --text: #f5f5f5;
   }
+  .title44.darkness{
+    color: #000000!important;
+    background-color: #ffffff!important;
+  }
+
+
+  /*  nav Items  */
+
+
+  /* Default Light Mode */
+body {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar Styles */
+nav.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 13px 0;
+  background-color: #4070f4; /* Blue background */
+  color: #fff; /* Light text for navbar items */
+  transition: background-color 0.3s ease, color 0.3s ease;
+  z-index: 10; /* Ensure it stays on top */
+  visibility: visible; /* Ensure visibility */
+}
+
+/* Navbar items */
+nav.sticky .nav-btn {
+  color: #fff; /* Default text color */
+  font-weight: normal;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+nav.sticky .nav-btn:hover {
+  color: #ff5722; /* Hover color for navbar items */
+}
+
+/* Dark Mode */
+body.dark {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* Dark Mode Navbar */
+body.dark nav.sticky {
+  background-color: #333; /* Dark background for navbar in dark mode */
+  color: #fff; /* Light text in dark mode */
+}
+
+body.dark nav.sticky .nav-btn {
+  color: #fff; /* Light text on navbar items in dark mode */
+}
+
+/* On Scroll: Change navbar background when sticky */
+nav.sticky.scroll {
+  background-color: #007bff; /* Blue background while scrolling */
+}
+
+body.dark nav.sticky.scroll {
+  background-color: #1a1a1a; /* Dark background while scrolling in dark mode */
+}
+
+/* Button Styles in Dark Mode */
+nav.sticky .nav-btn.darkness {
+  color: #fff !important;  /* Ensure text color is white */
+  font-weight: bold !important; /* Bold text for navbar items in dark mode */
+  background-color: transparent !important; /* Transparent background */
+}
+
+/* Ensure visibility of navbar items when at top */
+body:not(.dark) nav.sticky {
+  background-color: #4070f4; /* Blue background when not in dark mode */
+}
+
+body.dark nav.sticky {
+  background-color: #333; /* Dark background when dark mode is active */
+}
+
+body.dark .nav-btn {
+  color: rgb(255, 255, 255)!important; /* White text for nav items in dark mode */
+}
+
+/* Make navbar items more readable in both light and dark mode */
+body:not(.dark) nav.sticky .nav-btn {
+  color: #fff; /* White text in light mode */
+}
+
+body.dark nav.sticky .nav-btn {
+  color: #fff; /* White text in dark mode */
+}
+
+/*  close Nav _items */
+  
+  /* .nav-btn.darkness{
+        color: #000000!important;
+        font-weight: bold;
+    background-color: transparent!important;
+  } */
   .auto.dark{
     color:  #f5f5f5;
   }
@@ -521,6 +623,9 @@ nav.sticky{
   /* padding: 13px 0; */
   position: fixed;
 }
+
+
+
 nav .navbar{
   width: 90%;
   display: flex;
@@ -567,6 +672,7 @@ nav .navbar .menu li{
   background-color: #ffd7d7;
   transition: 0.75s;
 }
+
 .nav-btn:hover::after{
   width: 100%;
 }
@@ -1809,6 +1915,15 @@ section .button-11 button:hover{
   justify-content: center;
   align-items: center;
   width: 90%;
+}
+body.dark .topic,
+body.dark .para
+ {
+  color: white;
+}
+body.dark .title44{
+  color: #ffffff;
+  background-color: none;
 }
 .logo-image{
   display: flex;
